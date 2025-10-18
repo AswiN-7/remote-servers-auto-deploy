@@ -36,14 +36,3 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
           target: ${{ secrets.REMOTE_PATH }}
-
-      - name: Run script on remote
-        if: success()
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ${{ secrets.REMOTE_PATH }}
-            python3 app.py
